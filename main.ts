@@ -1,4 +1,4 @@
-let mySprite = sprites.create(img`
+let Catty = sprites.create(img`
     e e e . . . . e e e . . . . 
     c d d c . . c d d c . . . . 
     c b d d f f d d b c . . . . 
@@ -14,5 +14,7 @@ let mySprite = sprites.create(img`
     . f d f f f d f f d f . . . 
     . f f . . f f . . f f . . . 
     `, SpriteKind.Player)
+controller.moveSprite(Catty)
 tiles.setTilemap(tilemap`level1`)
-mySprite.setPosition(9, 7)
+Catty.setPosition(9, 7)
+scene.cameraFollowSprite(Catty)

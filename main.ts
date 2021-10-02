@@ -1,4 +1,15 @@
-let Catty = sprites.create(img`
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.greenOuterSouth2, function (sprite, location) {
+    tiles.placeOnRandomTile(Catty, sprites.dungeon.greenOuterNorth2)
+    Catty.y += 20
+    pause(100)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.greenOuterNorth2, function (sprite, location) {
+    tiles.placeOnRandomTile(Catty, sprites.dungeon.greenOuterSouth2)
+    Catty.y += 20
+    pause(100)
+})
+let Catty: Sprite = null
+Catty = sprites.create(img`
     e e e . . . . e e e . . . . 
     c d d c . . c d d c . . . . 
     c b d d f f d d b c . . . . 
@@ -18,3 +29,6 @@ controller.moveSprite(Catty)
 tiles.setTilemap(tilemap`level1`)
 Catty.setPosition(9, 7)
 scene.cameraFollowSprite(Catty)
+forever(function () {
+    music.playMelody("E B C5 A B G A F ", 250)
+})

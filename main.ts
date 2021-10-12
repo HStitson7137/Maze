@@ -8,6 +8,16 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.greenOuterNorth2, functio
     Catty.y += 20
     pause(100)
 })
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.purpleOuterSouth2, function (sprite, location) {
+    tiles.placeOnRandomTile(Catty, sprites.dungeon.purpleOuterNorth2)
+    Catty.y += 20
+    pause(100)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.purpleOuterNorth2, function (sprite, location) {
+    tiles.placeOnRandomTile(Catty, sprites.dungeon.purpleOuterSouth2)
+    Catty.y += 20
+    pause(100)
+})
 let Catty: Sprite = null
 Catty = sprites.create(img`
     e e e . . . . e e e . . . . 

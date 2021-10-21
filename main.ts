@@ -89,7 +89,7 @@ let Taco = sprites.create(img`
     . 4 5 4 5 5 4 e . . . . . . . . 
     . . 4 4 e e e . . . . . . . . . 
     `, SpriteKind.Food2)
-Taco.setPosition(10, 1000)
+Taco.setPosition(8, 1015)
 forever(function () {
     music.playMelody("E B C5 A B G A F ", 250)
 })

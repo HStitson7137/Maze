@@ -18,6 +18,15 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.purpleOuterNorth2, functi
     Catty.y += 20
     pause(100)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
+    info.changeScoreBy(10)
+    Cake.destroy()
+    music.baDing.play()
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.skillmap.islandTile4, function (sprite, location) {
+    game.over(true)
+})
+let Cake: Sprite = null
 let Catty: Sprite = null
 Catty = sprites.create(img`
     e e e . . . . e e e . . . . 
@@ -39,6 +48,25 @@ controller.moveSprite(Catty)
 tiles.setTilemap(tilemap`level1`)
 Catty.setPosition(9, 7)
 scene.cameraFollowSprite(Catty)
+Cake = sprites.create(img`
+    . . . . . . . . . . b b b . . . 
+    . . . . . . . . b e e 3 3 b . . 
+    . . . . . . b b e 3 2 e 3 a . . 
+    . . . . b b 3 3 e 2 2 e 3 3 a . 
+    . . b b 3 3 3 3 3 e e 3 3 3 a . 
+    b b 3 3 3 3 3 3 3 3 3 3 3 3 3 a 
+    b 3 3 3 d d d d 3 3 3 3 3 d d a 
+    b b b b b b b 3 d d d d d d 3 a 
+    b d 5 5 5 5 d b b b a a a a a a 
+    b 3 d d 5 5 5 5 5 5 5 d d d d a 
+    b 3 3 3 3 3 3 d 5 5 5 d d d d a 
+    b 3 d 5 5 5 3 3 3 3 3 3 b b b a 
+    b b b 3 d 5 5 5 5 5 5 5 d d b a 
+    . . . b b b 3 d 5 5 5 5 d d 3 a 
+    . . . . . . b b b b 3 d d d b a 
+    . . . . . . . . . . b b b a a . 
+    `, SpriteKind.Food)
+Cake.setPosition(59, 35)
 forever(function () {
     music.playMelody("E B C5 A B G A F ", 250)
 })

@@ -1,3 +1,6 @@
+namespace SpriteKind {
+    export const Food2 = SpriteKind.create()
+}
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.greenOuterSouth2, function (sprite, location) {
     tiles.placeOnRandomTile(Catty, sprites.dungeon.greenOuterNorth2)
     Catty.y += 20
@@ -21,6 +24,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.purpleOuterNorth2, functi
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeScoreBy(10)
     Cake.destroy()
+    Catty.sayText("YUM!")
     music.baDing.play()
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.skillmap.islandTile4, function (sprite, location) {
@@ -49,7 +53,7 @@ tiles.setTilemap(tilemap`level1`)
 Catty.setPosition(9, 7)
 scene.cameraFollowSprite(Catty)
 Cake = sprites.create(img`
-    . . . . . . . . . . b b b . . . 
+    . . . . . 3 . . 3 . b b b . . . 
     . . . . . . . . b e e 3 3 b . . 
     . . . . . . b b e 3 2 e 3 a . . 
     . . . . b b 3 3 e 2 2 e 3 3 a . 
@@ -66,7 +70,26 @@ Cake = sprites.create(img`
     . . . . . . b b b b 3 d d d b a 
     . . . . . . . . . . b b b a a . 
     `, SpriteKind.Food)
-Cake.setPosition(700, 5)
+Cake.setPosition(425, 775)
+let Taco = sprites.create(img`
+    . . . . . . . e e e e . . . . . 
+    . . . . . e e 4 5 5 5 e e . . . 
+    . . . . e 4 5 6 2 2 7 6 6 e . . 
+    . . . e 5 6 6 7 2 2 6 4 4 4 e . 
+    . . e 5 2 2 7 6 6 4 5 5 5 5 4 . 
+    . e 5 6 2 2 8 8 5 5 5 5 5 4 5 4 
+    . e 5 6 7 7 8 5 4 5 4 5 5 5 5 4 
+    e 4 5 8 6 6 5 5 5 5 5 5 4 5 5 4 
+    e 5 c e 8 5 5 5 4 5 5 5 5 5 5 4 
+    e 5 c c e 5 4 5 5 5 4 5 5 5 e . 
+    e 5 c c 5 5 5 5 5 5 5 5 4 e . . 
+    e 5 e c 5 4 5 4 5 5 5 e e . . . 
+    e 5 e e 5 5 5 5 5 4 e . . . . . 
+    4 5 4 e 5 5 5 5 e e . . . . . . 
+    . 4 5 4 5 5 4 e . . . . . . . . 
+    . . 4 4 e e e . . . . . . . . . 
+    `, SpriteKind.Food2)
+Taco.setPosition(10, 1000)
 forever(function () {
     music.playMelody("E B C5 A B G A F ", 250)
 })

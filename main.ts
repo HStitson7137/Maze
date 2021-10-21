@@ -30,6 +30,13 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
 scene.onOverlapTile(SpriteKind.Player, sprites.skillmap.islandTile4, function (sprite, location) {
     game.over(true)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Food2, function (sprite, otherSprite) {
+    info.changeScoreBy(20)
+    Taco.destroy()
+    Catty.sayText("TASTY!")
+    music.baDing.play()
+})
+let Taco: Sprite = null
 let Cake: Sprite = null
 let Catty: Sprite = null
 Catty = sprites.create(img`
@@ -71,7 +78,7 @@ Cake = sprites.create(img`
     . . . . . . . . . . b b b a a . 
     `, SpriteKind.Food)
 Cake.setPosition(425, 775)
-let Taco = sprites.create(img`
+Taco = sprites.create(img`
     . . . . . . . e e e e . . . . . 
     . . . . . e e 4 5 5 5 e e . . . 
     . . . . e 4 5 6 2 2 7 6 6 e . . 

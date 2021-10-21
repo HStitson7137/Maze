@@ -66,7 +66,7 @@ Cake = sprites.create(img`
     . . . . . . b b b b 3 d d d b a 
     . . . . . . . . . . b b b a a . 
     `, SpriteKind.Food)
-Cake.setPosition(59, 35)
+Cake.setPosition(700, 5)
 forever(function () {
     music.playMelody("E B C5 A B G A F ", 250)
 })

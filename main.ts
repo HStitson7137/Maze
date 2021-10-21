@@ -24,7 +24,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.purpleOuterNorth2, functi
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeScoreBy(10)
     Cake.destroy()
-    Catty.sayText("YUM!")
+    Catty.sayText("YUM!", 5000, false)
     music.baDing.play()
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.skillmap.islandTile4, function (sprite, location) {
@@ -33,7 +33,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.skillmap.islandTile4, function (s
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food2, function (sprite, otherSprite) {
     info.changeScoreBy(20)
     Taco.destroy()
-    Catty.sayText("TASTY!")
+    Catty.sayText("TASTY!", 5000, false)
     music.baDing.play()
 })
 let Taco: Sprite = null

@@ -1,6 +1,13 @@
 namespace SpriteKind {
     export const Food2 = SpriteKind.create()
+    export const Food3 = SpriteKind.create()
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Food3, function (sprite, otherSprite) {
+    info.changeScoreBy(20)
+    Pizza.destroy()
+    Catty.sayText("MMMMM!", 5000, false)
+    music.baDing.play()
+})
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.greenOuterSouth2, function (sprite, location) {
     tiles.placeOnRandomTile(Catty, sprites.dungeon.greenOuterNorth2)
     Catty.y += 20
@@ -31,11 +38,12 @@ scene.onOverlapTile(SpriteKind.Player, sprites.skillmap.islandTile4, function (s
     game.over(true)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food2, function (sprite, otherSprite) {
-    info.changeScoreBy(20)
+    info.changeScoreBy(30)
     Taco.destroy()
     Catty.sayText("TASTY!", 5000, false)
     music.baDing.play()
 })
+let Pizza: Sprite = null
 let Taco: Sprite = null
 let Cake: Sprite = null
 let Catty: Sprite = null
@@ -97,6 +105,26 @@ Taco = sprites.create(img`
     . . 4 4 e e e . . . . . . . . . 
     `, SpriteKind.Food2)
 Taco.setPosition(8, 1015)
+Pizza = sprites.create(img`
+    . . . . . . b b b b . . . . . . 
+    . . . . . . b 4 4 4 b . . . . . 
+    . . . . . . b b 4 4 4 b . . . . 
+    . . . . . b 4 b b b 4 4 b . . . 
+    . . . . b d 5 5 5 4 b 4 4 b . . 
+    . . . . b 3 2 3 5 5 4 e 4 4 b . 
+    . . . b d 2 2 2 5 7 5 4 e 4 4 e 
+    . . . b 5 3 2 3 5 5 5 5 e e e e 
+    . . b d 7 5 5 5 3 2 3 5 5 e e e 
+    . . b 5 5 5 5 5 2 2 2 5 5 d e e 
+    . b 3 2 3 5 7 5 3 2 3 5 d d e 4 
+    . b 2 2 2 5 5 5 5 5 5 d d e 4 . 
+    b d 3 2 d 5 5 5 d d d 4 4 . . . 
+    b 5 5 5 5 d d 4 4 4 4 . . . . . 
+    4 d d d 4 4 4 . . . . . . . . . 
+    4 4 4 4 . . . . . . . . . . . . 
+    `, SpriteKind.Food3)
+Pizza.setPosition(648, 5)
+info.startCountdown(180)
 forever(function () {
     music.playMelody("E B C5 A B G A F ", 250)
 })
